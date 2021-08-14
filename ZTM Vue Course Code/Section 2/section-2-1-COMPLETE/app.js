@@ -21,14 +21,23 @@ const vm = Vue.createApp({
     updateMiddleName(e) {
       this.middleName = e.target.value;
     },
+    changeName() {
+      this.firstName = this.firstName === "123" ? "456" : "123";
+      this.fullName = "ABC 123";
+    },
   },
   computed: {
-    fullName() {
-      console.log("ASDAD");
-
-      return `${this.firstName} ${
-        this.middleName
-      } ${this.lastName.toUpperCase()}`;
+    fullName: {
+      // getter
+      get: function () {
+        return this.firstName + " " + this.lastName;
+      },
+      // setter
+      set: function (newValue) {
+        var names = newValue.split(" ");
+        this.firstName = names[0];
+        this.lastName = names[names.length - 1];
+      },
     },
   },
   watch: {

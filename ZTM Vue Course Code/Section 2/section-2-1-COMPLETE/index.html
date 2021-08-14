@@ -13,25 +13,30 @@
       <p>{{ typeof age }}: {{ age }}</p>
       <hr />
 
-      <label>First Name</label>
-      <input type="text" v-model.lazy.trim="firstName" />
+      <div v-on:click.meta="changeName">
+        <label>First Name</label>
+        <input type="text" v-model.lazy.trim="firstName" />
 
-      <label>Middle Name</label>
-      <input type="text" @keyup.enter="updateMiddleName" />
+        <label>Middle Name</label>
+        <input type="text" @keyup.enter="updateMiddleName" />
+        <input type="text" @keydown.ctrl.75="changeName" />
+        <input v-on:keyup.meta.67="changeName" />
 
-      <label>Last Name</label>
-      <input
-        type="text"
-        :value="lastName"
-        @input.prevent="updateLastName('Last name triggered!', $event)"
-      />
+        <label>Last Name</label>
+        <input
+          type="text"
+          v-bind:value="lastName"
+          v-on:input.prevent="updateLastName('Last name triggered!', $event)"
+        />
 
-      <label>Age</label>
-      <input type="number" v-model.number="age" />
+        <label>Age</label>
+        <input type="number" v-model.number="age" />
 
-      <button type="button" @click="increment">Increment</button>
-      <button type="button" @click.shift="age--">Decrement</button>
+        <button type="button" @click="increment">Increment</button>
+        <button type="button" @click.shift.meta="age--">Decrement</button>
+      </div>
     </div>
+
     <!-- <div id="app2">{{ firstName }} {{ lastName }}</div> -->
 
     <script src="https://unpkg.com/vue@next"></script>

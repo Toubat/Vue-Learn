@@ -11,15 +11,16 @@ html {
   padding: 0;
   margin: 0;
 }
+
 body {
   font-family: sans-serif;
   height: 100%;
   margin: 0;
   background: #261c33;
   overflow: hidden;
-  display: flex; 
-  align-items: center; 
-  justify-content: center 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h2 {
@@ -38,7 +39,7 @@ main {
   font-family: monospace, sans-serif;
   font-size: 22px;
 }
-main label{
+main label {
   display: block;
 }
 main input[type="range"] {
@@ -71,6 +72,6 @@ button {
   margin-right: 10px;
 }
 
-label{
+label {
   color: #fff;
 }
