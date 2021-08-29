@@ -6,18 +6,17 @@
 <script>
 export default {
   name: "Greeting",
+  props: ["age"],
   data() {
     return {
       msg: "Hello World!",
     };
   },
-  props: ["age"],
 };
 </script>
 
 <style scoped lang="scss">
 $color: red;
-
 p {
   color: $color;
 }

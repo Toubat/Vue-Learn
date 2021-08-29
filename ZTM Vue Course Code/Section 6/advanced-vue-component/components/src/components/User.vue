@@ -1,8 +1,7 @@
 <template>
-  <button type="button" @click="onClickAge">Update Age</button>
-  <button type="button" @click="ageChangeFn(3)">Update Age CB</button>
+  <button type="button" @click="onAgeIncrement">Update Age</button>
+  <button type="button" @click="ageChangeFn(3)">Update Age Fn</button>
   <p>The user is {{ age }} years old.</p>
-  <p>{{ ageDoubled }}</p>
 </template>
 
 <script>
@@ -11,7 +10,7 @@ export default {
   props: {
     age: {
       type: [Number, String],
-      required: true,
+      // required: true,
       default: 20,
       validator(value) {
         return value < 130;
@@ -19,17 +18,13 @@ export default {
     },
     ageChangeFn: Function,
   },
-  emits: ["age-change"],
+  emits: ["age-increment"],
   methods: {
-    onClickAge() {
-      console.log("AASAS");
-      this.$emit("age-change", 3);
-    },
-  },
-  computed: {
-    ageDoubled() {
-      return this.age * 2;
+    onAgeIncrement() {
+      this.$emit("age-increment", 3);
     },
   },
 };
 </script>
+
+<style></style>

@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <h3>Hey!</h3>
-    <greeting :age="age"></greeting>
-    <user :age="age" @age-change="updateAge" :ageChangeFn="updateAgeCB"></user>
-  </div>
+  <h3>Hey!</h3>
+  <Greeting :age="age" />
+  <User :age="age" @age-increment="updateAge" :ageChangeFn="updateAgeCB" />
+  <p>{{ ageDoubled }}</p>
 </template>
 
 <script>
@@ -27,6 +26,11 @@ export default {
     },
     updateAgeCB(num) {
       this.age += num;
+    },
+  },
+  computed: {
+    ageDoubled() {
+      return this.age * 2;
     },
   },
 };
