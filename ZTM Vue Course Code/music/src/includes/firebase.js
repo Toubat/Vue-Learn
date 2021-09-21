@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getFirestore, collection } from "firebase/firestore";
+import { getStorage, ref } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -12,11 +13,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
 const db = getFirestore();
 const usersCollection = collection(db, "users");
+const songsCollection = collection(db, "songs");
+const commentsCollection = collection(db, "comments");
+const storage = getStorage(app);
 
 /* eslint-disable */
-export { auth, db, createUserWithEmailAndPassword, usersCollection, addDoc };
+export { auth, db, usersCollection, songsCollection, commentsCollection, storage, ref };

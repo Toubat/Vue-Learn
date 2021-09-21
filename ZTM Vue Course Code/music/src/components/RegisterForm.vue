@@ -1,6 +1,10 @@
 <template>
   <!-- Registration Form -->
-  <div class="text-white text-center font-bold p-5 mb-4" v-if="regShowAlert" :class="regAlertVariant">
+  <div
+    class="text-white text-center font-bold p-5 mb-4"
+    v-if="regShowAlert"
+    :class="regAlertVariant"
+  >
     {{ regAlertMessage }}
   </div>
   <vee-form :validation-schema="schema" @submit="register" :initial-values="userData">
@@ -86,7 +90,12 @@
     </div>
     <!-- TOS -->
     <div class="mb-3 pl-6">
-      <vee-field type="checkbox" name="tos" value="1" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
+      <vee-field
+        type="checkbox"
+        name="tos"
+        value="1"
+        class="w-4 h-4 float-left -ml-6 mt-1 rounded"
+      />
       <label class="inline-block">Accept terms of service</label>
       <div />
       <ErrorMessage class="text-red-600" name="tos" />
@@ -148,6 +157,8 @@ export default {
       this.regInSubmission = false;
       this.regAlertVariant = "bg-green-500";
       this.regAlertMessage = "Success! Your account has been created.";
+
+      window.location.reload();
     },
   },
 };
